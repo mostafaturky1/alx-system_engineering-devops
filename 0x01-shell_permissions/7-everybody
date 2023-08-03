@@ -1,2 +1,2 @@
 #!/bin/bash
-chhmod 111 hello
+chhmod a+x hello
