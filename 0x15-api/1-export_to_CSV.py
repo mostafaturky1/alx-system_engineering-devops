@@ -15,5 +15,5 @@ if __name__ == "__main__":
     with open(file, 'w', newline='') as csv_file:
         csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
         for todo in todos:
-            p = (sys.argv[1], name['name'], todo['completed'], todo['title'])
-            csv_writer.writerow(p)
+            csv_writer.writerow([sys.argv[1],
+                             name['name'], todo['completed'], todo['title']])
