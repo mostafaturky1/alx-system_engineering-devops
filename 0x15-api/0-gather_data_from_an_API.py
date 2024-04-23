@@ -3,11 +3,10 @@
 import requests
 import sys
 
+url = f"https://jsonplaceholder.typicode.com/users/{sys.argv[1]}"
 
-urlGet = requests.get
-(f"https://jsonplaceholder.typicode.com/users/{sys.argv[1]}/todos")
-urlGet2 = requests.get
-(f"https://jsonplaceholder.typicode.com/users/{sys.argv[1]}")
+urlGet = requests.get(url + "/todos")
+urlGet2 = requests.get(url)
 
 todos = urlGet.json()
 name = urlGet2.json()
