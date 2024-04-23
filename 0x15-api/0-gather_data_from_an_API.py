@@ -15,7 +15,8 @@ if __name__ == "__main__":
     for todo in todos:
         if todo['completed'] is True:
             complete += 1
-    print(f"Employee {name['name']} is done with tasks({complete}/{len(todos)}):")
+    p = f"Employee {name['name']} is done with tasks({complete}/{len(todos)}):"
+    print(p)
     for todo in todos:
         if todo['completed'] is True:
             print(f"\t {todo['title']}")
