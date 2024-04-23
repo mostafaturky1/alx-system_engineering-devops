@@ -6,18 +6,18 @@ import requests
 import sys
 
 
-if __name__ == "__main__":
-    url = f"https://jsonplaceholder.typicode.com/users/{sys.argv[1]}"
+if __name__ == '__main__':
+    todo = requests.get(f'https://jsonplaceholder.typicode.com/users/\
+{sys.argv[1]}/todos')
+    users = requests.get(f'https://jsonplaceholder.typicode.com/users/\
+{sys.argv[1]}')
 
-    urlGet = requests.get(url + "/todos")
-    urlGet2 = requests.get(url)
+    todoo = todo.json()
+    user = users.json()
 
-    todos = urlGet.json()
-    name = urlGet2.json()
-    file = f"{sys.argv[1] + ".csv"}"
-    with open(file, 'w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
-
-        for todo in todos:
-            p = (sys.argv[1], name['name'], todo['completed'], todo['title'])
-            csv_writer.writerow(p)
+    p = f"{sys.argv[1]}.csv"
+    with open(p, "w") as csv_file:
+        writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
+        for i in todoo:
+            writer.writerow([sys.argv[1],
+                             user['username'], i['completed'], i['title']])
