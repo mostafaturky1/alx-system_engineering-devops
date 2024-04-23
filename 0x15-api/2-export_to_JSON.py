@@ -1,24 +1,19 @@
 #!/usr/bin/python3
-"""Python script that, using this REST API, for a given employee ID
-returns information about his/her TOdO list progress."""
+"""Exports to-do list information for a given employee ID to JSON format."""
 import json
 import requests
 import sys
 
+if __name__ == "__main__":
+    user_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(user_id)).json()
+    username = user.get("username")
+    todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
-if __name__ == '__main__':
-    todo = requests.get(f'https://jsonplaceholder.typicode.com/users/\
-{sys.argv[1]}/todos')
-    users = requests.get(f'https://jsonplaceholder.typicode.com/users/\
-{sys.argv[1]}')
-
-    todoo = todo.json()
-    user = users.json()
-
-    p = f"{sys.argv[1]}.json"
-    with open(p, "w") as file:
-        newDict = []
-        for i in todoo:
-            newDict.append({"task": i['title'], "completed": i['completed'],
-                            "username": user['username']})
-        json.dump({sys.argv[1]: newDict}, file)
+    with open("{}.json".format(user_id), "w") as jsonfile:
+        json.dump({user_id: [{
+                "task": t.get("title"),
+                "completed": t.get("completed"),
+                "username": username
+            } for t in todos]}, jsonfile)
