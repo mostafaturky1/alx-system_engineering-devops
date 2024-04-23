@@ -18,4 +18,4 @@ for todo in todos:
 print(f"Employee {name['name']} is done with tasks({complete}/{len(todos)}):")
 for todo in todos:
     if todo['completed'] is True:
-        print(f"     {todo['title']}")
+        print(f"\t {todo['title']}")
