@@ -8,7 +8,7 @@ def number_of_subscribers(subreddit):
     Returns the number of subscribers (not active users,
     total subscribers) for a given subreddit.
     """
-    url = 'https://www.reddit.com/r/' + subreddit + '/about.json'
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
     headers = {'User-Agent': 'MyAPI/0.0.4'}
     response = requests.get(url, headers=headers, allow_redirects=False)
     data = response.json()
