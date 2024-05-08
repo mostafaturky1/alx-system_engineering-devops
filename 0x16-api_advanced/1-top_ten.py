@@ -7,8 +7,7 @@ import requests
 
 def top_ten(subreddit):
     """
-    Returns the number of subscribers (not active users,
-    total subscribers) for a given subreddit.
+    Prints the titles of the first 10 hot posts listed for a given subreddit.
     """
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {'User-Agent': 'MyAPI/0.0.4'}
