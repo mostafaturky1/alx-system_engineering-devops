@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-1-top_ten
+2-recurse.py
 """
 import requests
 after = None
@@ -8,7 +8,8 @@ after = None
 
 def recurse(subreddit, hot_list=[]):
     """
-    Prints the titles of the first 10 hot posts listed for a given subreddit.
+    Returns a list containing the titles of all hot articles for a given subreddit.
+    If no results are found for the given subreddit, the function should return None.
     """
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     global after
